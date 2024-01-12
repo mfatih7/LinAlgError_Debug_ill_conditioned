@@ -5,10 +5,6 @@ from models.models_MobileNetV1 import get_model as MobileNetV1_get_model
 from models.models_MobileNetV2 import get_model as MobileNetV2_get_model
 from models.models_MobileNetV3 import get_model as MobileNetV3_get_model
 
-from models.models_LTFGC import get_model_LTFGC as LTFGC_get_model
-from models.models_LTFGC import get_model_OANET as OANET_get_model
-from models.models_LTFGC import get_model_OANET_Iter as OANET_Iter_get_model
-
 from models.models_exp import get_model as model_exp_get_model
 
 import torch
@@ -32,13 +28,6 @@ def get_model( config, model_type, N, model_width, en_checkpointing ):
             return MobileNetV2_get_model( config, N, en_checkpointing )    
         elif( model_type == 'MobileNetV3' ):
             return MobileNetV3_get_model( config, N, en_checkpointing )
-        
-        elif( model_type == 'LTFGC' ):
-            return LTFGC_get_model( N, model_width, en_checkpointing )
-        elif( model_type == 'OANET' ):
-            return OANET_get_model( N, model_width, en_checkpointing )
-        elif( model_type == 'OANET_Iter' ):
-            return OANET_Iter_get_model( N, model_width, en_checkpointing )
         
         elif( model_type == 'model_exp' ):
             return model_exp_get_model( config, N, model_width, en_checkpointing )        

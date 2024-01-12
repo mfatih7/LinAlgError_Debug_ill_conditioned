@@ -13,7 +13,7 @@ class Config:
         self.device = 'tpu'
         
         self.tpu_cores = 'single'
-        self.tpu_cores = 'multi'
+        # self.tpu_cores = 'multi'
         
         self.validation = 'disable'
         self.validation = 'enable'
