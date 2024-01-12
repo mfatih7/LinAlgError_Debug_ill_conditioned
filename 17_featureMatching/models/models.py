@@ -1,11 +1,5 @@
 from models.models_CNN_Plain import get_model as CNN_Plain_get_model
 from models.models_CNN_Residual import get_model as CNN_Residual_get_model
-from models.models_CNN_Residual_Context import get_model as CNN_Residual_Context_get_model
-from models.models_MobileNetV1 import get_model as MobileNetV1_get_model
-from models.models_MobileNetV2 import get_model as MobileNetV2_get_model
-from models.models_MobileNetV3 import get_model as MobileNetV3_get_model
-
-from models.models_exp import get_model as model_exp_get_model
 
 import torch
 from torchsummary import summary
@@ -20,17 +14,6 @@ def get_model( config, model_type, N, model_width, en_checkpointing ):
             return CNN_Plain_get_model( config, N, model_width, en_checkpointing )    
         elif( model_type == 'CNN_Residual' ):    
             return CNN_Residual_get_model( config, N, model_width, en_checkpointing )
-        elif( model_type == 'CNN_Residual_Context' ):    
-            return CNN_Residual_Context_get_model( config, N, model_width, en_checkpointing )
-        elif( model_type == 'MobileNetV1' ):
-            return MobileNetV1_get_model( config, N, en_checkpointing )    
-        elif( model_type == 'MobileNetV2' ):
-            return MobileNetV2_get_model( config, N, en_checkpointing )    
-        elif( model_type == 'MobileNetV3' ):
-            return MobileNetV3_get_model( config, N, en_checkpointing )
-        
-        elif( model_type == 'model_exp' ):
-            return model_exp_get_model( config, N, model_width, en_checkpointing )        
         
         else:
             raise ValueError(f"The provided argument is not valid: {model_type}")
