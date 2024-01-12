@@ -10,7 +10,7 @@ class Config:
         
         self.device = 'cpu'
         self.device = 'cuda'
-        # self.device = 'tpu'
+        self.device = 'tpu'
         
         self.tpu_cores = 'single'
         self.tpu_cores = 'multi'
@@ -28,7 +28,7 @@ class Config:
             
             self.home_dir = os.path.expanduser('~')
             
-            self.storage_local_or_bucket = 'bucket'    
+            self.storage_local_or_bucket = 'local'    
             
             self.bucket_name = 'bucket-us-central1-relativeposeestimation'
             self.bucket_name = 'bucket-europe-west4-relativeposeestimation'
@@ -39,17 +39,17 @@ class Config:
         else:
             self.storage_local_or_bucket = 'local'
         
-        self.first_experiment = 101
+        self.first_experiment = 100
         
         # self.model_type = 'CNN_Plain'
-        # self.model_type = 'CNN_Residual'
+        self.model_type = 'CNN_Residual'
         # self.model_type = 'CNN_Residual_Context'        
         # self.model_type = 'MobileNetV1'
         # self.model_type = 'MobileNetV2'
         # self.model_type = 'MobileNetV3'
         
-        self.model_type = 'model_exp'
-        self.model_exp_no = 1005
+        # self.model_type = 'model_exp'
+        # self.model_exp_no = 1005
         
         # self.model_type = 'LTFGC'
         # self.model_type = 'OANET'
@@ -67,19 +67,19 @@ class Config:
         else:
             self.model_width = 6
         
-        self.ess_loss = 'geo_loss'
-        # self.ess_loss = 'ess_loss'
+        # self.ess_loss = 'geo_loss'
+        self.ess_loss = 'ess_loss'
         
         # training_params ->   [model_type(n_to_n, 1_to_1), N_images_in_batch, N, batch_size]
         
         if( self.input_type == '1_to_1'):
             # self.training_params = [ [ 1, 512, 64, ],  ]        
-            self.training_params = [ [ 1, 512, 512, ],  ]
-            # self.training_params = [ [ 1, 1024, 1024, ],  ]
+            # self.training_params = [ [ 1, 512, 512, ],  ]
+            self.training_params = [ [ 1, 1024, 1024, ],  ]
             # self.training_params = [ [ 1, 2048, 2048, ],  ]
             
-            self.n_epochs = [500, 500, 0] # always cls loss
-            # self.n_epochs = [500, 0, 1] # only first chunk cls loss
+            # self.n_epochs = [500, 500, 0] # always cls loss
+            self.n_epochs = [500, 0, 1] # only first chunk cls loss
             
             self.early_finish_epoch = 15
         else:
